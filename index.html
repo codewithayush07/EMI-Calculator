@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Loan Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Berkshire+Swash&family=Hanalei+Fill&family=Langar&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: aquamarine;
+        }
+
+        .main {
+            background-color: rgb(215, 210, 210);
+            border-radius: 10px;
+            border: 2px solid rgb(5, 125, 97);
+            box-shadow: 0px 0px 20px red;
+        }
+
+        .input {
+            width: 100%;
+            height: 50px;
+            font-family: "Bona Nova SC", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+        }
+
+        .txt {
+            margin-top: 40px;
+            font-family: "Agbalumo", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        #btn {
+            margin-top: 50px;
+            padding: 10px 50px;
+            border-radius: 30px;
+            background: linear-gradient(to right, #fc466b, #3f5efb);
+            font-size: 30px;
+            color: white;
+            font-weight: bold;
+            font-family: "Berkshire Swash", serif;
+            font-weight: 400;
+            font-style: normal;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration-line: underline;
+        }
+
+        #btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ffffff;
+        }
+
+        #answer {
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, 0.619);
+            text-align: right;
+            font-size: 25px;
+            padding-top: 7px;
+        }
+
+        .text-decoration-underline {
+            font-family: "Langar", serif;
+            font-weight: 400;
+            font-style: normal;
+            word-spacing: 4px;
+        }
+
+        .berkshire-swash-regular {
+            font-family: "Berkshire Swash", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .Total {
+            font-family: "Berkshire Swash", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .label {
+            background-color: white;
+            width: 30vh;
+            text-align: end;
+            border: 1px solid rgb(127, 122, 122);
+            font-size: 22px;
+            overflow: scroll;
+            font-family: "Bona Nova SC", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .h {
+            font-family: "Bona Nova SC", serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 25px;
+            color: rgb(48, 48, 48);
+        }
+
+        .piechart {
+            width: 200px;
+            height: 200px;
+            border: 1px solid wheat;
+            border-radius: 50%;
+            background-image: conic-gradient(pink 70deg,
+                    rgb(0, 191, 255) 0 235deg,
+                    orange 0);
+        }
+    
+    </style>
+</head>
+
+<body>
+    <div class="row m-0 p-0">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 mt-5 mb-5 main">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8">
+                            <h1 class="mt-5 text-decoration-underline text-center">Loan EMI Calculator</h1>
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-10 mt-3">
+                            <h2 class="txt">Loan Amount: ₹</h2>
+                            <input type="number" class="input" id="amt">
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-10">
+                            <h2 class="txt">Rate (Interest): %</h2>
+                            <input type="number" class="input" id="rate">
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-10">
+                            <h2 class="txt">Time (in months):</h2>
+                            <input type="number" class="input" id="time">
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4 "></div>
+                        <div class="col-sm-4">
+                            <button type="submit" id="btn">Calculate</button>
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>
+
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="row" style="height: 20vh;"></div>
+                    <div class="row" style="height: 30vh;">
+                        <div class="piechart ms-4"></div>
+                    </div>
+                    <div class="row ms-2" style="height: 50vh;">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <h5 class="h">Monthly Loan EMI</h5>
+                                <input class="label" id="label1" readonly>
+                            </div>
+                            <div class="row mt-3">
+                                <h5 class="h">Principal Amount</h5>
+                                <input class="label" id="label2" readonly>
+                            </div>
+                            <div class="row mt-3">
+                                <h5 class="h">Interest Amount</h5>
+                                <input class="label" id="label3" readonly>
+                            </div>
+                            <div class="row mt-3">
+                                <h5 class="h">Total Payable Amount</h5>
+                                <input class="label" id="label4" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+
+    </div>
+
+    <!-- JS -->
+
+    <script>
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                var pri = parseFloat($("#amt").val());
+                var rate = parseFloat($("#rate").val());
+                var mon = parseFloat($("#time").val());
+
+                var arate = rate / 12 / 100;
+                var temp = Math.pow((1 + arate), mon);
+                var monthly = (pri * arate * temp) / (temp - 1);
+                var totalamt = monthly * mon;
+                var extra = totalamt - pri;
+
+                $("#label1").val(monthly);
+                $("#label2").val( pri);
+                $("#label3").val( extra);
+                $("#label4").val(totalamt);
+            })
+        })
+    </script>
+</body>
+
+</html>
