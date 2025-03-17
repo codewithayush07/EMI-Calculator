@@ -31,12 +31,6 @@ A simple and efficient EMI (Equated Monthly Installment) Calculator that helps u
 
 🛠 Tech Stack
 
-Frontend: [Mention if applicable]
-
-Backend: [Mention if applicable]
-
-Libraries/Frameworks: [Mention if used]
-
 📌 Future Enhancements
 
 🔹 Loan comparison feature
